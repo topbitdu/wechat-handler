@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors     = [ 'Topbit Du' ]
   spec.email       = [ 'topbit.du@gmail.com' ]
   spec.homepage    = 'https://github.com/topbitdu/wechat-handler'
-  spec.summary     = 'The Wechat Handler engine includes a concern and a controller to handle the Wechat event & message notifications.'
-  spec.description = 'The Wechat Handler engine handles the Wechat event & message notifications.'
+  spec.summary     = 'Wechat Handler Engine 微信回调处理引擎'
+  spec.description = 'Wechat Handler engine handles the Wechat event & message notifications. 微信回调处理引擎处理微信服务器发出的事件通知和消息通知。'
   spec.license     = 'MIT'
 
   spec.files         = Dir[ '{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md' ]
