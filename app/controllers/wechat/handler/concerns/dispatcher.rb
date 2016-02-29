@@ -7,7 +7,6 @@ module Wechat::Handler::Concerns::Dispatcher
     skip_before_filter :verify_authenticity_token
 
     def create
-      Rails.logger.warn '-------- Wechat Handler Dispatcher concern #create'
 
       signature         = params[:signature]
       timestamp         = params[:timestamp]
@@ -49,21 +48,29 @@ module Wechat::Handler::Concerns::Dispatcher
       end
 
       pairs = ::Wechat::Callback::XmlDocument.load xml_text
+      replying_pairs = { 'ToUserName' => pairs['FromUserName'], 'FromUserName' => pairs['ToUserName'], 'CreateTime' => Time.now.to_i }
 
-      replying_pairs    = {
-          'ToUserName'   => pairs['FromUserName'],
-          'FromUserName' => pairs['ToUserName'],
-          'CreateTime'   => Time.now.to_i,
-          'MsgType'      => 'text',
-          'Content'      => '是紫色的。'
-        }
+      if respond_to? :on_event
+        replied_pairs  = on_event pairs
+        replying_pairs = replying_pairs.merge! replied_pairs
+      else
+        Rails.logger.warn "The #{includer} does not have the #on_event method."
+      end
+
+      #replying_pairs    = {
+      #    'ToUserName'   => pairs['FromUserName'],
+      #    'FromUserName' => pairs['ToUserName'],
+      #    'CreateTime'   => Time.now.to_i,
+      #    'MsgType'      => 'text',
+      #    'Content'      => '是紫色的。'
+      #  }
       replying_xml_text = ::Wechat::Callback::XmlDocument.create replying_pairs
 
       if 'aes'==replying_encryption
         random_bytes       = ::Wechat::Callback::RandomByteArray.create 16
-        plain_text         = ::Wechat::Callback::SecureMessage.create random_bytes, replying_xml_text, wechat_app_id
-        encrypted          = ::Wechat::Callback::MessageEncryption.create plain_text, wechat_encoding_aes_keys
-        replying_singature = ::Wechat::Callback::Signature.create wechat_token, timestamp, nonce, encrypted
+        plain_text         = ::Wechat::Callback::SecureMessage.create     random_bytes, replying_xml_text, wechat_app_id
+        encrypted          = ::Wechat::Callback::MessageEncryption.create plain_text,   wechat_encoding_aes_keys
+        replying_singature = ::Wechat::Callback::Signature.create         wechat_token, timestamp, nonce, encrypted
         encrypted_replying_pairs = {
             'Encrypt'      => encrypted,
             'MsgSignature' => replying_singature,
