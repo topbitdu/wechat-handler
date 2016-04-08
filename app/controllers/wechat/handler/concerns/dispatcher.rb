@@ -57,13 +57,6 @@ module Wechat::Handler::Concerns::Dispatcher
         Rails.logger.warn "The #{includer} does not have the #on_event method."
       end
 
-      #replying_pairs    = {
-      #    'ToUserName'   => pairs['FromUserName'],
-      #    'FromUserName' => pairs['ToUserName'],
-      #    'CreateTime'   => Time.now.to_i,
-      #    'MsgType'      => 'text',
-      #    'Content'      => '是紫色的。'
-      #  }
       replying_xml_text = ::Wechat::Callback::XmlDocument.create replying_pairs
 
       if 'aes'==replying_encryption
