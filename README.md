@@ -5,18 +5,24 @@
 
 The Wechat Handler engine handles the Wechat event & message notifications. 微信回调处理引擎处理微信服务器发出的事件通知和消息通知。
 
+
+
 ## Recent Update
 Check out the [Road Map](ROADMAP.md) to find out what's the next.
 Check out the [Change Log](CHANGELOG.md) to find out what's new.
+
+
 
 ## Usage in Gemfile
 ```ruby
 gem 'wechat-handler'
 ```
 
+
+
 ## Include the controller concern
 ```ruby
-include ::Wechat::Handler::Concerns::Dispatcher
+include Wechat::Handler::Concerns::Dispatcher
 
 def on_event(pairs)
   { 'MsgType' => 'text', 'Content' => 'Aloha!' }
