@@ -28,7 +28,7 @@ module Wechat::Handler::Concerns::Dispatcher
 
         replying_encryption = 'aes'
 
-        render text: 'sign_error' and return unless check_signature(signature, nonce, timestamp)
+        render status: :bad_request, text: 'sign_error' and return unless check_signature(signature, nonce, timestamp)
         encoded_message = ::Wechat::Callback::XmlDocument.load(request_body)['Encrypt']
         Rails.logger.info "The encoded_message is #{encoded_message.inspect}."
         render text: 'msg_sign_error' and return unless check_message_signature(message_signature, encoded_message, nonce, timestamp)
