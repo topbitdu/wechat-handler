@@ -38,7 +38,7 @@ module Wechat::Handler::Concerns::Dispatcher
         Rails.logger.warn "  >> Wechat Callback >> Message Controller >> App ID of the Secure Message = #{app_id}."
         Rails.logger.warn '  >> Wechat Callback >> Message Controller >> XML Text of the Secure Message ='
         Rails.logger.warn xml_text
-        render text: 'app_id_error' and return unless check_app_id(app_id)
+        render status: :bad_request, text: 'app_id_error' and return unless check_app_id(app_id)
 
       else
 
