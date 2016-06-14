@@ -42,7 +42,7 @@ module Wechat::Handler::Concerns::Dispatcher
 
       else
 
-        render text: "Encrypt type #{encrypt_type} is not suppored"
+        render status: :bad_request, text: "Encrypt type #{encrypt_type} is not suppored"
         return
 
       end
