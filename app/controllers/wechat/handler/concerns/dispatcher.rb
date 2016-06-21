@@ -89,7 +89,7 @@ module Wechat::Handler::Concerns::Dispatcher
       Rails.logger.warn '  >> The Replying XML Text is as the following:'
       Rails.logger.warn replying_xml_text
 
-      render status: 200, xml: replying_xml_text
+      render status: :created, xml: replying_xml_text
 
     end
 
