@@ -3,12 +3,13 @@
 <head>
   <title>Wechat Handler</title>
   <%= stylesheet_link_tag    "handler/application", media: "all" %>
-  <%= javascript_include_tag "handler/application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <%= yield %>
+
+<%= javascript_include_tag "handler/application" %>
 
 </body>
 </html>
