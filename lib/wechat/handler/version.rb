@@ -1,5 +1,5 @@
 module Wechat
   module Handler
-    VERSION = '0.1'.freeze
+    VERSION = '0.1.1'.freeze
   end
 end
