@@ -9,12 +9,14 @@ The Wechat Handler engine handles the Wechat event & message notifications. å¾®ä
 
 
 ## Recent Update
+
 Check out the [Road Map](ROADMAP.md) to find out what's the next.
 Check out the [Change Log](CHANGELOG.md) to find out what's new.
 
 
 
 ## Usage in Gemfile
+
 ```ruby
 gem 'wechat-handler'
 ```
@@ -22,6 +24,7 @@ gem 'wechat-handler'
 
 
 ## Include the controller concern
+
 ```ruby
 include Wechat::Handler::Concerns::Dispatcher
 
