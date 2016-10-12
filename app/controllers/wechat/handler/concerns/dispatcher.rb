@@ -33,7 +33,7 @@ module Wechat::Handler::Concerns::Dispatcher
         Rails.logger.info "The encoded_message is #{encoded_message.inspect}."
         render status: :bad_request, text: 'msg_sign_error' and return unless check_message_signature(message_signature, encoded_message, nonce, timestamp)
 
-        message = ::Wechat::Callback::MessageDecryption.create encoded_message, Rails.application.secrets.wechat_encoding_aes_keys
+        message = Wechat::Callback::MessageDecryption.create encoded_message, Rails.application.secrets.wechat_encoding_aes_keys
         random_bytes, xml_size, xml_text, app_id, padding_bytes = ::Wechat::Callback::SecureMessage.load message
         Rails.logger.warn "  >> Wechat Callback >> Message Controller >> App ID of the Secure Message = #{app_id}."
         Rails.logger.warn '  >> Wechat Callback >> Message Controller >> XML Text of the Secure Message ='
