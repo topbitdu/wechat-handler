@@ -57,7 +57,7 @@ module Wechat::Handler::Concerns::Dispatcher
         Rails.logger.warn "The #{includer} does not have the #on_event method."
       end
 
-      replying_xml_text = ::Wechat::Callback::XmlDocument.create replying_pairs
+      replying_xml_text = Wechat::Callback::XmlDocument.create replying_pairs
 
       if 'aes'==replying_encryption
         random_bytes       = ::Wechat::Callback::RandomByteArray.create 16
