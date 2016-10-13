@@ -47,7 +47,7 @@ module Wechat::Handler::Concerns::Dispatcher
 
       end
 
-      pairs = ::Wechat::Callback::XmlDocument.load xml_text
+      pairs = Wechat::Callback::XmlDocument.load xml_text
       replying_pairs = { 'ToUserName' => pairs['FromUserName'], 'FromUserName' => pairs['ToUserName'], 'CreateTime' => Time.now.to_i }
 
       if respond_to? :on_event
