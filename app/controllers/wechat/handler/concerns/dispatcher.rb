@@ -73,7 +73,7 @@ module Wechat::Handler::Concerns::Dispatcher
         replying_xml_text = Wechat::Callback::XmlDocument.create encrypted_replying_pairs
 
         # debugging
-        debugging_pairs = ::Wechat::Callback::XmlDocument.load replying_xml_text
+        debugging_pairs = Wechat::Callback::XmlDocument.load replying_xml_text
         Rails.logger.warn '  >> Wechat Callback >> Message Controller >> Debugging Pairs ='
         Rails.logger.warn debugging_pairs.inspect
         debugging_encrypted_message = debugging_pairs['Encrypt']
