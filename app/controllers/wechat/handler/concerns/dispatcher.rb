@@ -70,7 +70,7 @@ module Wechat::Handler::Concerns::Dispatcher
             'TimeStamp'    => timestamp,
             'Nonce'        => nonce
           }
-        replying_xml_text = ::Wechat::Callback::XmlDocument.create encrypted_replying_pairs
+        replying_xml_text = Wechat::Callback::XmlDocument.create encrypted_replying_pairs
 
         # debugging
         debugging_pairs = ::Wechat::Callback::XmlDocument.load replying_xml_text
