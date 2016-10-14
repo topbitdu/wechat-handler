@@ -62,7 +62,7 @@ module Wechat::Handler::Concerns::Dispatcher
       if 'aes'==replying_encryption
         random_bytes       = Wechat::Callback::RandomByteArray.create 16
         plain_text         = Wechat::Callback::SecureMessage.create     random_bytes, replying_xml_text, wechat_app_id
-        encrypted          = ::Wechat::Callback::MessageEncryption.create plain_text,   wechat_encoding_aes_keys
+        encrypted          = Wechat::Callback::MessageEncryption.create plain_text,   wechat_encoding_aes_keys
         replying_singature = ::Wechat::Callback::Signature.create         wechat_token, timestamp, nonce, encrypted
         encrypted_replying_pairs = {
             'Encrypt'      => encrypted,
