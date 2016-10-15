@@ -77,7 +77,7 @@ module Wechat::Handler::Concerns::Dispatcher
         Rails.logger.warn '  >> Wechat Callback >> Message Controller >> Debugging Pairs ='
         Rails.logger.warn debugging_pairs.inspect
         debugging_encrypted_message = debugging_pairs['Encrypt']
-        debugging_decrypted_message = ::Wechat::Callback::MessageDecryption.create debugging_encrypted_message, wechat_encoding_aes_keys
+        debugging_decrypted_message = Wechat::Callback::MessageDecryption.create debugging_encrypted_message, wechat_encoding_aes_keys
         Rails.logger.warn '  >> Wechat Callback >> Message Controller >> Debugging Decrypted Message ='
         Rails.logger.warn debugging_decrypted_message
         debugging_random_bytes, debugging_xml_size, debugging_xml_text, debugging_app_id, debugging_padding_bytes = ::Wechat::Callback::SecureMessage.load debugging_decrypted_message
