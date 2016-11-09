@@ -109,7 +109,7 @@ module Wechat::Handler::Concerns::Dispatcher
     end
 
     def check_message_signature(message_signature, encoded_message, nonce, timestamp)
-      actual  = ::Wechat::Callback::MessageSignature.create encoded_message, wechat_token, timestamp, nonce
+      actual  = Wechat::Callback::MessageSignature.create encoded_message, wechat_token, timestamp, nonce
       matched = message_signature==actual
       Rails.logger.warn "Actual message signature is #{actual}, which does not equal to the given message signature #{message_signature}." unless matched
       matched
