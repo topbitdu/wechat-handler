@@ -4,4 +4,4 @@
 1. Dispatcher controller concern
 
 ## v0.1.1
-1. Improve the Ruby Gem Specification to support Rails v5.0
+1. Improve the Ruby Gem Specification to support [rails](https://github.com/rails/rails) v5.0
