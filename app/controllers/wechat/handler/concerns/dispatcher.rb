@@ -2,7 +2,7 @@ module Wechat::Handler::Concerns::Dispatcher
 
   extend ActiveSupport::Concern
 
-  self.included do |includer|
+  included do |includer|
 
     skip_before_filter :verify_authenticity_token
 
