@@ -20,7 +20,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = [ 'lib' ]
 
   spec.add_dependency 'rails',             '>= 4.2'
-  spec.add_dependency 'wechat-validation', '>= 0.2'
   spec.add_dependency 'wechat-validator',  '>= 0.3'
   spec.add_dependency 'wechat-callback',   '>= 0.3'
 
