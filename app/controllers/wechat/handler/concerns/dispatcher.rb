@@ -1,3 +1,6 @@
+##
+# Dispatcher 是分发微信回调消息的关注点。
+
 module Wechat::Handler::Concerns::Dispatcher
 
   extend ActiveSupport::Concern
