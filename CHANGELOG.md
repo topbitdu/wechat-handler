@@ -8,4 +8,4 @@
 
 ## v0.1.2
 1. Improved the Ruby Gem Specification to depend on [wechat-validator](https://github.com/topbitdu/wechat-validator) v0.3 and [wechat-callback](https://github.com/topbitdu/wechat-callback) v0.3
-2. Improve the Ruby Gem Specification to never depend on [wechat-validation](https://github.com/topbitdu/wechat-validation)
+2. Improved the Ruby Gem Specification to never depend on [wechat-validation](https://github.com/topbitdu/wechat-validation)
