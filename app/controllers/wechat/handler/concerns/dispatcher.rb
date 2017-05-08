@@ -9,6 +9,8 @@ module Wechat::Handler::Concerns::Dispatcher
 
     skip_before_filter :verify_authenticity_token
 
+    ##
+    # 接收微信推送消息的方法。
     def create
 
       signature         = params[:signature]
